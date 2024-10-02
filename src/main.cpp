@@ -5,6 +5,8 @@
 #include <windows.h>
 #include <string>
 
+std::string currentFileName = "text.txt";
+
 void WriteInColor(int color, std::string text)
 {
     HANDLE hConsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -19,15 +21,15 @@ void WriteInColor(int color, std::string text)
 int main()
 {
     WriteInColor(16, "Wocode");
-
-    std::ifstream file("test.txt");
+    WriteInColor(1, " Editing " + currentFileName);
+    std::ifstream file("text.txt");
     std::vector<std::string> lines;
     std::string line;
 
     while (std::getline(file, line)) {
         lines.push_back(line);
     }
-    
+
     file.close();
     for (const auto& modifiedLine : lines)
     {
